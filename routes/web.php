@@ -81,3 +81,4 @@ Route::post('/reports_delete', [ReportsController::class, 'reports_delete'])->na
 //end report routes
 // end Admin routes
 });
+
