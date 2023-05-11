@@ -28,7 +28,7 @@
                                     <select class="form-select"id="services" name="services">
                                         <option value="">Select Service / సేవను ఎంచుకోండి</option>
                                         @foreach ($service as $item)
-                                        <option value="{{$item->service_id}}">{{$item->service_name}}</option>
+                                        <option value="{{$item->id}}">{{$item->service_name}}</option>
                                         @endforeach
 
                                     </select>
