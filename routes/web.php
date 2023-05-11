@@ -29,7 +29,7 @@ Route::get('/log-in', function () {
     return redirect(url('login'));
 });
 
-//Route::get('/user_loc_details', [UserController::class, 'user_loc_details'])->name('user.ip_location_details');
+Route::get('/user_loc_details', [UserController::class, 'user_loc_details'])->name('user.ip_location_details');
 
 Auth::routes();
 
@@ -52,6 +52,7 @@ Route::post('/subservice/create', [AddSubServiceController::class, 'create'])->n
 Route::get('/subservice/edit/{id}', [AddSubServiceController::class, 'edit'])->name('subservice.edit');
 Route::post('/subservice/update', [AddSubServiceController::class, 'update'])->name('subservice.update');
 Route::post('/subservice/delete', [AddSubServiceController::class, 'delete'])->name('subservice.delete');
+
 //end add sub service routes
 
 //add Document routes
@@ -60,26 +61,23 @@ Route::post('/documents/create', [AddDocumentsController::class, 'create'])->nam
 Route::get('/documents/edit/{id}', [AddDocumentsController::class, 'edit'])->name('documents.edit');
 Route::post('/documents/update', [AddDocumentsController::class, 'update'])->name('documents.update');
 Route::post('/documents/delete', [AddDocumentsController::class, 'delete'])->name('documents.delete');
+
 //end add Document routes
 
 //add link doc to ser routes
 Route::get('/linkdocument', [LinkDocumentsController::class, 'linkdocument'])->name('linkdocument');
+Route::post('/linkdocument_ajax', [LinkDocumentsController::class, 'linkdocument_ajax'])->name('linkdocument_ajax');
+Route::post('/linkdocument_insert', [LinkDocumentsController::class, 'linkdocument_insert'])->name('linkdocument_insert');
+
 
 //end add link doc to ser routes
 
 //report routes
 Route::get('/reports', [ReportsController::class, 'reports'])->name('reports');
+Route::post('/reports_ajax', [ReportsController::class, 'reports_ajax'])->name('reports_ajax');
+Route::get('/reports_edit', [ReportsController::class, 'reports_edit'])->name('reports_edit');
+Route::post('/reports_delete', [ReportsController::class, 'reports_delete'])->name('reports_delete');
 
 //end report routes
 // end Admin routes
-
-// Wards routes
-Route::get('/wards-home', [UserController::class, 'wardshome'])->name('wardshome');
-Route::get('/wards-addmember', [UserController::class, 'wards_add_member'])->name('wards_add_member');
-Route::get('/wards-house', [UserController::class, 'wards_house_owner'])->name('wards_house_owner');
-Route::get('/wards-family', [UserController::class, 'wards_family_member'])->name('wards_family_member');
-Route::get('/wards-enter', [UserController::class, 'wards_enter_service'])->name('wards_enter_service');
-Route::get('/wards-reports', [UserController::class, 'wards_reports'])->name('wards_reports');
-
-// end ward routes
 });
