@@ -28,7 +28,7 @@ class ReportsController extends Controller
                 $document = DocumentMst::get();
                 $service=CitizenServiceMst::get();
                 $sub_service=CitizenSubServiceMst::get();
-        return view('admin.edit-link-doc',compact('document','sub_service','service'));
+        return view('admin.edit-document',compact('document','sub_service','service'));
     }
 
 
