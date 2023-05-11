@@ -16,7 +16,7 @@ class ReportsController extends Controller
         $service=CitizenServiceMst::get();
         $sub_service=CitizenSubServiceMst::get();
         $document=DocumentMst::get();
-        
+
         $doc_map=SubServiceDocumentMap::select('service_id', 'sub_service_id')->where('status', '=', '0')
         ->groupBy('service_id', 'sub_service_id')->with('service','sub_service','document')->get();
 
@@ -24,13 +24,15 @@ class ReportsController extends Controller
     }
 
 
-    public function edit(Request $request)
+    public function edit($service,$sub_service)
     {
                 $document = DocumentMst::get();
                 $service=CitizenServiceMst::get();
                 $sub_service=CitizenSubServiceMst::get();
-        return view('admin.edit-document',compact('document','sub_service','service'));
+              $updateser=SubServiceDocumentMap::where('service_id', 'service_id')->where('sub_service_id', 'sub_service_id');
+
+              return view('admin.edit-link-doc',compact('document','sub_service','service'));
     }
 
-    
+
 }
