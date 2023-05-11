@@ -26,18 +26,19 @@
                     </span>
                 </h4>
                  <form action="" method="post" id="link_doc" name="link_doc">
-
+                    @csrf
+<input type="hidden" id="" name="userid" value="{{$service_id,$sub_service_id}}">
                 <div class="row mb-5">
                     <div class="col-md-6 mb-3">
                         <div class="form-group">
                             Select Service / సేవను ఎంచుకోండి
 
-                            <select class="form-select">
+                            <select class="form-select" name="service" id="service">
                                 <option value="">Select Service / సేవను ఎంచుకోండి</option>
                                 @foreach ($service as $services)
 
 
-                                <option value="{{$services->service_id}}" @if($services->service_id == $sub_service[0]->service_id) selected ;@endif >{{$services->service_name}}</option>
+                                <option value="{{$services->service_id}}" {{$services->service_id == $ser_id ? 'selected': ''}} >{{$services->service_name}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -47,24 +48,36 @@
                         <div class="form-group">
                             Select Sub Service/ఉప సేవను ఎంచుకోండి
 
-                            <select class="form-select">
+                            <select class="form-select" name="sub_service" id="sub_service">
                                 <option value="">Select Sub Service / సేవను ఎంచుకోండి</option>
-                                @foreach ($sub_service as $services)
 
-
-                                <option value="{{$services->sub_service_id}}" @if($services->service_id == $sub_service[0]->sub_service_id) selected ;@endif >{{$services->sub_service_name}}</option>
-                                @endforeach
                             </select>
                         </div>
                     </div>
+
+@foreach ($updateser as $update)
+@php
+$all[]=$update->document_id;
+@endphp
+@endforeach
 
                     <div class="col-md-12 mb-3">
                         <div class="form-group">
                             <small>Select Documents / పత్రాలను ఎంచుకోండి</small>
                             <ul class="m-0 p-0 s-doc-mobile">
                                @foreach ($document as $data)
+
+                               @if(in_array($data->document_id,$all))
+                                 @php
+                                     $checked = 'checked';
+                                 @endphp
+                                @else
+                                @php
+                                     $checked = null;
+                                 @endphp
+                               @endif
                                 <li class="align-items-start d-flex me-3 float-start">
-                                    <span class="p-1"><input type="checkbox" class="largerCheckbox mt-1" name="documents[]" value="{{$data->document_id}}"    /></span>
+                                    <span class="p-1"><input type="checkbox" class="largerCheckbox mt-1" name="documents[]" value="{{$data->document_id}}"  {{$checked}}  /></span>
                                     <span class="p-1" >{{$data->document_name}}</span>
                                 </li>
                             </ul>
@@ -91,15 +104,36 @@
 @endsection
 @push('scripts')
 <script>
+
+    $(document).ready(function(){
+        $('#service').on('change', function(){
+            var service_id = $(this).val();
+            var _token = '{{ csrf_token() }}'
+            $.ajax({
+                   type:'POST',
+                   url:"{{ url('reports_ajax') }}",
+                   data:{service_id:service_id,_token:_token},
+                   success:function(data){
+                       console.log(data);
+                       $('#sub_service').html(data);
+                   }
+            });
+        })
+    });
+
+
+</script>
+<script>
     $(document).ready(function() {
       $('#link_doc').submit(function(e){
           e.preventDefault();
-          // alert('hi');
+        //   alert('hi');
        var formData = new FormData($(this)[0]);
        $.ajax({
-          url : ' {{ route('service.create') }} ',
+
+          url : ' {{ route('reports.update') }} ',
           type : 'POST',
-          data : formData,
+          data :formData,
           cache : false,
           async : false,
           processData : false,
@@ -108,9 +142,9 @@
           // Check if operation was successful
           if (response.status === 'success') {
               // Show toastr message
-              toastr.success('Data inserted successfully!');
+              toastr.success('Data updated successfully!');
            setTimeout(function(){
-          window.location.href = '{{ route('service') }}';}, 3000);
+          window.location.href = '{{ route('reports') }}';}, 3000);
           } else {
               toastr.error('Error inserting data!');
           }

@@ -74,9 +74,10 @@ Route::post('/linkdocument_insert', [LinkDocumentsController::class, 'linkdocume
 
 //report routes
 Route::match(['GET','POST'],'/reports', [ReportsController::class, 'reports'])->name('reports');
-Route::post('/reports_ajax', [ReportsController::class, 'reports_ajax'])->name('reports_ajax');
-Route::get('/reports_edit/{service_id}/{sub_service_id} ', [ReportsController::class, 'edit'])->name('reports_edit');
+Route::post('/reports_ajax', [ReportsController::class, 'link_doc_ajax'])->name('reports_ajax');
+Route::get('/reports_edit/{service_id}/{sub_service_id}', [ReportsController::class, 'edit'])->name('reports_edit');
 Route::post('/reports_delete', [ReportsController::class, 'reports_delete'])->name('reports_delete');
+Route::post('/reports_update', [ReportsController::class, 'reports_update'])->name('reports.update');
 
 
 
