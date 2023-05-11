@@ -16,7 +16,7 @@ class ReportsController extends Controller
         $service=CitizenServiceMst::get();
         $sub_service=CitizenSubServiceMst::get();
         $document=DocumentMst::get();
-        $doc_map=SubServiceDocumentMap::with('service','subService','document')->get(); // one time load using with
+        $doc_map=SubServiceDocumentMap::with('service','sub_Service','document')->get(); // one time load using with
 
 
         return view('admin.reports',compact('service','sub_service','document','doc_map'));
