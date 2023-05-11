@@ -23,13 +23,12 @@ class ReportsController extends Controller
     }
 
 
-    public function reports_edit(Request $request)
+    public function edit(Request $request)
     {
-        $service=CitizenServiceMst::get();
-        $sub_service=CitizenSubServiceMst::get();
-        $documents=DocumentMst::get();
-        $edit = SubServiceDocumentMap::where('id',$request->id);
-        return view('admin.edit-sub_doc_map',compact('edit','service','sub_service','documents'));
+                $document = DocumentMst::get();
+                $service=CitizenServiceMst::get();
+                $sub_service=CitizenSubServiceMst::get();
+        return view('admin.edit-link-doc',compact('document','sub_service','service'));
     }
 
 
