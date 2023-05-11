@@ -31,6 +31,5 @@ class ReportsController extends Controller
         return view('admin.edit-document',compact('document','sub_service','service'));
     }
 
-
-
+    
 }
