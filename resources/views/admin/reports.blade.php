@@ -105,7 +105,7 @@
 
                                             <td>{{$s++}}</td>
                                             <td>{{$documents->service->service_name}}</td>
-                                            <td>{{$documents->subService->sub_service_name}}</td>
+                                            <td>{{$documents->sub_Service->sub_service_name}}</td>
                                             <td>{{$documents->document->document_name}}</td>
                                             <td>
                                                 <a href="{{url('reports_edit')}}" style="color:#fff !important;" class="btn btn-sm btn-primary mb-2"><i class="menu-icon tf-icons bx bx-edit"></i> Edit</a>
