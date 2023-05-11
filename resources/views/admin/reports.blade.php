@@ -108,8 +108,8 @@
                                             <td>{{$documents->sub_Service->sub_service_name}}</td>
                                             <td>
                                                 @php
-                                                $map = SubServiceDocumentMap::where('sub_service_id', $store->sub_service_id)
-                                                ->where('service_id', $store->service_id)->where('status','=', 0)->get();
+                                                $map = SubServiceDocumentMap::where('sub_service_id', $documents->sub_service_id)
+                                                ->where('service_id', $documents->service_id)->where('status','=', 0)->get();
                                             @endphp
                                          @foreach ($map as $val)
                                              {{$val->document->document_name}},

@@ -16,6 +16,7 @@ class ReportsController extends Controller
         $service=CitizenServiceMst::get();
         $sub_service=CitizenSubServiceMst::get();
         $document=DocumentMst::get();
+        
         $doc_map=SubServiceDocumentMap::select('service_id', 'sub_service_id')->where('status', '=', '0')
         ->groupBy('service_id', 'sub_service_id')->with('service','sub_service','document')->get();
 
