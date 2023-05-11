@@ -81,13 +81,13 @@ element.style {
 
                         <span class="logo-sm">
 
-                          <img src="{{url('public/assets/images/tslogo.png')}}" class="img-fluid" alt="" title="" />
+                          <img src="{{url('assets/images/tslogo.png')}}" class="img-fluid" alt="" title="" />
 
                         </span>
 
                         <span class="logo-lg">
 
-                           <img src="{{url('public/assets/images/tslogo.png')}}" class="img-fluid" alt="" title="" />
+                           <img src="{{url('assets/images/tslogo.png')}}" class="img-fluid" alt="" title="" />
 
                         </span>
 
@@ -99,13 +99,13 @@ element.style {
 
                         <span class="logo-sm">
 
-                           <img src="{{url('public/assets/images/tslogo.png')}}" class="img-fluid" alt="" title="" />
+                           <img src="{{url('assets/images/tslogo.png')}}" class="img-fluid" alt="" title="" />
 
                         </span>
 
                         <span class="logo-lg">
 
-                          <img src="{{url('public/assets/images/tslogo.png')}}" class="img-fluid" alt="" title="" />
+                          <img src="{{url('assets/images/tslogo.png')}}" class="img-fluid" alt="" title="" />
 
 
                         </span>
@@ -260,7 +260,7 @@ element.style {
 
                                     <div class="d-flex">
 
-                                        <img src="{{ asset('public/assets/images/users/avatar-3.jpg') }}"
+                                        <img src="{{ asset('assets/images/users/avatar-3.jpg') }}"
                                             class="me-3 rounded-circle avatar-xs" alt="user-pic">
 
                                         <div class="flex-1">
@@ -281,7 +281,7 @@ element.style {
 
                                     <div class="d-flex">
 
-                                        <img src="{{ asset('public/assets/images/users/avatar-5.jpg') }}"
+                                        <img src="{{ asset('assets/images/users/avatar-5.jpg') }}"
                                             class="me-3 rounded-circle avatar-xs" alt="user-pic">
 
                                         <div class="flex-1">
@@ -403,7 +403,7 @@ element.style {
                         <span class="d-flex align-items-center">
 
                             <img class="rounded-circle header-profile-user"
-                                src="{{ asset('public/assets/images/users/user-dummy-img.jpg') }}"
+                                src="{{ asset('assets/images/users/user-dummy-img.jpg') }}"
                                 alt="Header Avatar">
 
                             <span class="text-start ms-xl-2">

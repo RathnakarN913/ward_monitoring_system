@@ -13,17 +13,17 @@
     <link rel="shortcut icon" href="assets/images/favicon.png">
 
     <!-- Layout config Js -->
-    <script src="{{asset('public/assets/js/layout.js')}}"></script>
+    <script src="{{asset('assets/js/layout.js')}}"></script>
     <!-- Bootstrap Css -->
-    <link href="{{asset('public/assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
     <!-- Icons Css -->
-    <link href="{{asset('public/assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
     <!-- App Css-->
-    <link href="{{asset('public/assets/css/app.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('assets/css/app.min.css')}}" rel="stylesheet" type="text/css" />
 
     <!-- custom Css-->
-    <link href="{{asset('public/assets/css/custom.min.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{asset('public/assets/css//custom1.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('assets/css/custom.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('assets/css//custom1.css')}}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"
         integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -81,7 +81,7 @@
                         <div class="login ">
 
                             <center>
-                                <img src="{{url('public/assets/images/tslogo.png')}}" class="img-fluid" alt="" title="" />
+                                <img src="{{url('assets/images/tslogo.png')}}" class="img-fluid" alt="" title="" />
                                 <h4 class="title-mobile"><strong> Telangana Wards Monitoring System</h4>
                             </center>
 
@@ -199,17 +199,17 @@
      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
         integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="{{asset('public/assets/libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-    <script src="{{asset('public/assets/libs/simplebar/simplebar.min.js')}}"></script>
-    <script src="{{asset('public/assets/libs/node-waves/waves.min.js')}}"></script>
-    <script src="{{asset('public/assets/libs/feather-icons/feather.min.js')}}"></script>
-    <script src="{{asset('public/assets/js/pages/plugins/lord-icon-2.1.0.js')}}"></script>
-    <script src="{{asset('public/assets/js/plugins.js')}}"></script>
+    <script src="{{asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('assets/libs/simplebar/simplebar.min.js')}}"></script>
+    <script src="{{asset('assets/libs/node-waves/waves.min.js')}}"></script>
+    <script src="{{asset('assets/libs/feather-icons/feather.min.js')}}"></script>
+    <script src="{{asset('assets/js/pages/plugins/lord-icon-2.1.0.js')}}"></script>
+    <script src="{{asset('assets/js/plugins.js')}}"></script>
 
     <!-- particles js -->
-    <script src="{{asset('public/assets/libs/particles.js')}}"></script>
+    <script src="{{asset('assets/libs/particles.js')}}"></script>
     <!-- particles app js -->
-    <script src="{{asset('public/assets/js/pages/particles.app.js')}}"></script>
+    <script src="{{asset('assets/js/pages/particles.app.js')}}"></script>
     <!-- password-addon init -->
     <script src="{{asset('assets/js/pages/password-addon.init.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
