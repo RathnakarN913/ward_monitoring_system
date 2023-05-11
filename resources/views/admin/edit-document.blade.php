@@ -55,10 +55,14 @@
 
                     </div>
                     <!-- / Content -->
+        </div>
+    </div>
+</div>
 
 
 
-ripts')
+@endsection
+@push('scripts')
 
 <script>
     $(document).ready(function() {
