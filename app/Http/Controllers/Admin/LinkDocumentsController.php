@@ -11,4 +11,6 @@ class LinkDocumentsController extends Controller
     {
         return view('admin.link-documents');
     }
+
+    
 }
