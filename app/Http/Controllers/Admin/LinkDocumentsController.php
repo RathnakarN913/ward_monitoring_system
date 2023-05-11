@@ -71,8 +71,6 @@ public function linkdocument_insert( Request $request){
 
     return response()->json(['status' => 'success']);
 }
-
-
 }
 
 

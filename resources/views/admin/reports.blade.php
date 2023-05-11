@@ -1,3 +1,6 @@
+@php
+    use App\Models\SubServiceDocumentMap;
+@endphp
 @extends('admin.layouts.main')
 @section('content')
 
@@ -50,7 +53,7 @@
                             </div>
 
                             <div class="col-md-3 mb-3">
-                                <div class="form-group">
+                                <div class="form-group" name="document" id="document">
                                      Select Document /  పత్రాలను ఎంచుకోండి
 
                                     <select class="form-select">
@@ -106,7 +109,15 @@
                                             <td>{{$s++}}</td>
                                             <td>{{$documents->service->service_name}}</td>
                                             <td>{{$documents->sub_Service->sub_service_name}}</td>
-                                            <td>{{$documents->document->document_name}}</td>
+                                            <td>
+                                                @php
+                                                $map = SubServiceDocumentMap::where('sub_service_id', $documents->sub_service_id)
+                                                ->where('service_id', $documents->service_id)->where('status','=', 0)->get();
+                                            @endphp
+                                         @foreach ($map as $val)
+                                             {{$val->document->document_name}},
+                                         @endforeach
+                                            </td>
                                             <td>
                                                 <a href="{{url('reports_edit')}}" style="color:#fff !important;" class="btn btn-sm btn-primary mb-2"><i class="menu-icon tf-icons bx bx-edit"></i> Edit</a>
                                                 <a  href="{{url('')}}"style="color:#fff !important;" class="btn btn-sm btn-danger mb-2"><i class="menu-icon tf-icons bx bx-trash"></i> Delete</a>
