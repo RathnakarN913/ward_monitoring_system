@@ -7,10 +7,10 @@
 
 
 <div class="page-content">
-    
+
     <div class="container-fluid">
-          
-          
+
+
             <!-- Content -->
 
                     <div class=" ">
@@ -21,58 +21,55 @@
                         </h4>
 
                         <div class="row">
-                            
+
                             <div class="col-md-3 mb-3">
                                 <div class="form-group">
                                     Service Name / సేవ పేరు
-                                    <select class="form-select">
+                                    <select class="form-select"id="services" name="services">
                                         <option value="">Select Service / సేవను ఎంచుకోండి</option>
-                                        <option value="">Aadhar Card / సేవను ఎంచుకోండి</option>
-                                        <option value="">PAN Card / సేవను ఎంచుకోండి</option>
-                                        <option value="">Ration Card / సేవను ఎంచుకోండి</option>
-                                        <option value="">Power Bill / సేవను ఎంచుకోండి</option>
-                                        <option value="">Certigicate / సేవను ఎంచుకోండి</option>
+                                        @foreach ($service as $item)
+                                        <option value="{{$item->id}}">{{$item->service_name}}</option>
+                                        @endforeach
+
                                     </select>
                                 </div>
+                                {{-- commit changes --}}
                             </div>
-                            
+
                             <div class="col-md-3 mb-3">
                                 <div class="form-group">
                                      Sub Service Name/ఉప సేవ పేరు
-                                    <select class="form-select">
+                                    <select class="form-select" name="sub_service" id="subservice">
                                         <option value="">Select sub Service / సేవను ఎంచుకోండి</option>
-                                        <option value="">Aadhar Card / సేవను ఎంచుకోండి</option>
-                                        <option value="">PAN Card / సేవను ఎంచుకోండి</option>
-                                        <option value="">Ration Card / సేవను ఎంచుకోండి</option>
-                                        <option value="">Power Bill / సేవను ఎంచుకోండి</option>
-                                        <option value="">Certigicate / సేవను ఎంచుకోండి</option>
+                                        @foreach ($sub_service as $sub)
+                                        <option value="{{$sub->sub_service_id}}">{{$sub->sub_service_name}}</option>
+                                        @endforeach
+
                                     </select>
                                 </div>
                             </div>
-                            
+
                             <div class="col-md-3 mb-3">
                                 <div class="form-group">
                                      Select Document /  పత్రాలను ఎంచుకోండి
-                                     
+
                                     <select class="form-select">
                                         <option value="">Select Document /  పత్రాలను ఎంచుకోండి</option>
-                                        <option value="">Aadhar Card / సేవను ఎంచుకోండి</option>
-                                        <option value="">PAN Card / సేవను ఎంచుకోండి</option>
-                                        <option value="">Ration Card / సేవను ఎంచుకోండి</option>
-                                        <option value="">Power Bill / సేవను ఎంచుకోండి</option>
-                                        <option value="">Certigicate / సేవను ఎంచుకోండి</option>
+                                       @foreach ($document as $doc)
+                                       <option value="{{$doc->document_id}}">{{$doc->document_name}}</option>
+                                       @endforeach
                                     </select>
                                 </div>
                             </div>
-                            
+
                             <div class="col-md-2 mb-3">
                                 <div class="form-group">
                                     <small>&nbsp;</small>
                                     <a style="color:#fff ;width: 100%" class="btn btn-primary" ><i class="menu-icon tf-icons bx bx-search"></i>Search</a>
                                 </div>
                             </div>
-                            
-                            
+
+
 <!--
                             <div class="col-md-2 dropdown ms-auto mb-3 text-end">
                                 <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -100,22 +97,28 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @php
+                                            $s=1;
+                                        @endphp
                                         <tr>
-                                            <td>1</td>
-                                            <td>Aadhar card</td>
-                                            <td>Aadhar card</td>
-                                            <td>Aadhar card</td>
+                                            @foreach ($doc_map as $documents)
+
+                                            <td>{{$s++}}</td>
+                                            <td>{{$documents->service->service_name}}</td>
+                                            <td>{{$documents->subService->sub_service_name}}</td>
+                                            <td>{{$documents->document->document_name}}</td>
                                             <td>
-                                                <a style="color:#fff !important;" class="btn btn-sm btn-primary mb-2"><i class="menu-icon tf-icons bx bx-edit"></i> Edit</a>
-                                                <a style="color:#fff !important;" class="btn btn-sm btn-danger mb-2"><i class="menu-icon tf-icons bx bx-trash"></i> Delete</a>
+                                                <a href="{{url('reports_edit')}}" style="color:#fff !important;" class="btn btn-sm btn-primary mb-2"><i class="menu-icon tf-icons bx bx-edit"></i> Edit</a>
+                                                <a  href="{{url('')}}"style="color:#fff !important;" class="btn btn-sm btn-danger mb-2"><i class="menu-icon tf-icons bx bx-trash"></i> Delete</a>
                                             </td>
                                         </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
-                    <!-- / Content -->  
+                    <!-- / Content -->
 
     </div>
 
@@ -126,14 +129,7 @@
 
 
 
-
-
-
-
-
-
-
-
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 
 
@@ -144,5 +140,5 @@
 
 @endsection
 @push('scripts')
-    
+
 @endpush
