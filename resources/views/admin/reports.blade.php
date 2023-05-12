@@ -33,7 +33,7 @@
                                     <select class="form-select"id="services" name="services">
                                         <option value="">Select Service / సేవను ఎంచుకోండి</option>
                                         @foreach ($service as $item)
-                                        <option value="{{$item->service_id}}">{{$item->service_name}}</option>
+                                        <option value="{{$item->id}}">{{$item->service_name}}</option>
                                         @endforeach
 
                                     </select>
@@ -123,7 +123,7 @@
                                          @endforeach
                                             </td>
                                             <td>
-                                                <a href="{{url('reports_edit')}}" style="color:#fff !important;" class="btn btn-sm btn-primary mb-2"><i class="menu-icon tf-icons bx bx-edit"></i> Edit</a>
+                                                <a href="{{route('reports_edit',['service_id'=>$documents->service_id,'sub_service_id'=>$documents->sub_service_id])}}" style="color:#fff !important;" class="btn btn-sm btn-primary mb-2"><i class="menu-icon tf-icons bx bx-edit"></i> Edit</a>
                                                 <a  href="{{url('')}}"style="color:#fff !important;" class="btn btn-sm btn-danger mb-2"><i class="menu-icon tf-icons bx bx-trash"></i> Delete</a>
                                             </td>
                                         </tr>

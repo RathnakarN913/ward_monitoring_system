@@ -1,5 +1,24 @@
 @extends('admin.layouts.main')
 @section('content')
+    <style>
+        input.largerCheckbox {
+            width: 20px;
+            height: 20px;
+            display: inline
+        }
+
+        @media only screen and (max-width: 600px) {
+            .s-doc-mobile li {
+                width: 100%;
+            }
+        }
+    </style>
+
+    <div class="page-content">
+
+        <div class="container-fluid">
+
+            <div class="">
 
 
                 <h4 class="fw-bold py-3 mb-4">
@@ -13,67 +32,22 @@
                         <div class="form-group">
                             Select Service / సేవను ఎంచుకోండి
 
-                            <select class="form-select" >
+                            <select class="form-select">
                                 <option value="">Select Service / సేవను ఎంచుకోండి</option>
                                 @foreach ($service as $services)
 
 
-<style>
-    .errorcl {
-        color: red;
-    }
-
-    input.largerCheckbox {
-        width: 26px;
-        height: 26px;
-    }
-</style>
-
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-
-<div class="page-content">
-
-    <div class="container-fluid">
-
-        <div class="">
-
-              <!-- Content -->
-
-                    <div class=" ">
-
-
-                        <h4 class="fw-bold py-3 mb-4">
-                            <span class="  "><strong> Documents Edit / పత్రాలను సవరించండి     </strong>   </span>
-                        </h4>
-                      <form  method="post"  id="documentForm" name="documentForm">
-                        @csrf
-                        <input type="hidden" name="id" value="{{ $document->document_id}}"/>
-                        <div class="row mb-3">
-                            <div class="col-md-6 mb-2">
-                                <div class="form-group">
-                                    Documents to be amended / సవరించాల్సిన పత్రాలు
-                                    <input type="text" class="form-control" name="document_name" id="document_name" value="{{$document->document_name}}" />
-                                </div>
-                            </div>
-                            <div class="col-md-2 mb-2">
-                                <div class="form-group mt-3">
-                                    <small>&nbsp;</small>
-                                    <input type="submit" class="btn btn-primary" value="Update / నవీకరణ చేయండి" />
-                                </div>
-                            </div>
+                                <option value="{{$services->service_id}}" @if($services->service_id == $sub_service[0]->service_id) selected ;@endif >{{$services->service_name}}</option>
+                                @endforeach
+                            </select>
                         </div>
-                    </form>
-
-
                     </div>
 
                     <div class="col-md-6 mb-3">
                         <div class="form-group">
                             Select Sub Service/ఉప సేవను ఎంచుకోండి
 
-                            <select class="form-select" >
+                            <select class="form-select">
                                 <option value="">Select Sub Service / సేవను ఎంచుకోండి</option>
                                 @foreach ($sub_service as $services)
 
@@ -103,7 +77,7 @@
                     <div class="col-md-2 mb-3 ms-auto">
                         <div class="form-group text-end">
                             <small>&nbsp;</small>
-                            <input type="button" class="btn btn-primary" value="Save / సేవ్ చేయండి" />
+                            <input type="submit" class="btn btn-primary" value="Update / సేవ్ చేయండి" />
                         </div>
                     </div>
                 </div>
@@ -111,22 +85,19 @@
 
 
         </div>
+    </form>
+
     </div>
-</div>
-
-
-
 @endsection
 @push('scripts')
-
 <script>
     $(document).ready(function() {
-      $('#documentForm').submit(function(e){
+      $('#link_doc').submit(function(e){
           e.preventDefault();
           // alert('hi');
        var formData = new FormData($(this)[0]);
        $.ajax({
-          url : ' {{ route('documents.update') }} ',
+          url : ' {{ route('service.create') }} ',
           type : 'POST',
           data : formData,
           cache : false,
@@ -137,9 +108,9 @@
           // Check if operation was successful
           if (response.status === 'success') {
               // Show toastr message
-              toastr.success('Record Updated successfully..!');
+              toastr.success('Data inserted successfully!');
            setTimeout(function(){
-          window.location.href = '{{ route('documents') }}';}, 3000);
+          window.location.href = '{{ route('service') }}';}, 3000);
           } else {
               toastr.error('Error inserting data!');
           }
@@ -169,5 +140,45 @@
 </script>
 
 
-@endpush
+<script>
+function delete_user(id) {
+  var del = confirm("Are you sure you want to delete this record?");
+  if (del == true) {
+     // alert("record deleted")
+      $.ajax({
+          url: '{{ route('service.delete') }}',
+          type: 'POST',
+          data: {
+              id : id,
+              _token: '{{csrf_token()}}'
+          },
+          success: function(data, textStatus, xhr) {
+              if (xhr.status == 201) {
+                 toastr.success(data.msg);
+              }
+              setTimeout(function(){
+                  window.location.href = '{{ route('service') }}';}, 3000);
 
+          },
+           error: function(xhr, textStatus, errorThrown) {
+      if (xhr.status == 422) {
+          console.log(xhr);
+      var errors = xhr.responseJSON.error;
+      var error_msg = 'this Record have some Dependancy can`t Delete..!';
+           toastr.error(error_msg);
+
+      } else {
+      toastr.error('An error occurred while deleting the record.');
+      }
+  }
+      });
+  } else {
+      alert("Record Not Deleted");
+  }
+
+}
+
+</script>
+
+
+@endpush
