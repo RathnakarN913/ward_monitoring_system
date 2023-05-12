@@ -32,7 +32,7 @@
                         <div class="form-group">
                             Select Service / సేవను ఎంచుకోండి
 
-                            <select class="form-select">
+                            <select class="form-select" >
                                 <option value="">Select Service / సేవను ఎంచుకోండి</option>
                                 @foreach ($service as $services)
 
@@ -47,7 +47,7 @@
                         <div class="form-group">
                             Select Sub Service/ఉప సేవను ఎంచుకోండి
 
-                            <select class="form-select">
+                            <select class="form-select" >
                                 <option value="">Select Sub Service / సేవను ఎంచుకోండి</option>
                                 @foreach ($sub_service as $services)
 

@@ -11,14 +11,14 @@ use App\Models\SubServiceDocumentMap;
 
 class ReportsController extends Controller
 {
-    public function reports()
+    public function reports(Request $request)
     {
         $service=CitizenServiceMst::get();
         $sub_service=CitizenSubServiceMst::get();
         $document=DocumentMst::get();
-        
+
         $doc_map=SubServiceDocumentMap::select('service_id', 'sub_service_id')->where('status', '=', '0')
-        ->groupBy('service_id', 'sub_service_id')->with('service','sub_service','document')->get();
+        ->groupBy('service_id', 'sub_service_id')->get();
 
         return view('admin.reports',compact('service','sub_service','document','doc_map'));
     }
@@ -32,5 +32,13 @@ class ReportsController extends Controller
         return view('admin.edit-document',compact('document','sub_service','service'));
     }
 
-    
+
+
+
+public function service_id(Request $request){
+
+
+}
+
+
 }

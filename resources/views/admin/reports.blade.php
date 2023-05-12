@@ -24,7 +24,9 @@
                         </h4>
 
                         <div class="row">
-
+                            <form action="" method="post">
+                                @csrf
+                                <div class="row">
                             <div class="col-md-3 mb-3">
                                 <div class="form-group">
                                     Service Name / సేవ పేరు
@@ -42,7 +44,7 @@
                             <div class="col-md-3 mb-3">
                                 <div class="form-group">
                                      Sub Service Name/ఉప సేవ పేరు
-                                    <select class="form-select" name="sub_service" id="subservice">
+                                    <select class="form-select" name="sub_service" id="sub_service">
                                         <option value="">Select sub Service / సేవను ఎంచుకోండి</option>
                                         @foreach ($sub_service as $sub)
                                         <option value="{{$sub->sub_service_id}}">{{$sub->sub_service_name}}</option>
@@ -69,10 +71,12 @@
                                 <div class="form-group">
                                     <small>&nbsp;</small>
                                     <a style="color:#fff ;width: 100%" class="btn btn-primary" ><i class="menu-icon tf-icons bx bx-search"></i>Search</a>
+
                                 </div>
                             </div>
+                        </div>
 
-
+                        </form>
 <!--
                             <div class="col-md-2 dropdown ms-auto mb-3 text-end">
                                 <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
