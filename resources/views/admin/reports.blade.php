@@ -33,7 +33,7 @@
                                     <select class="form-select"id="services" name="services">
                                         <option value="">Select Service / సేవను ఎంచుకోండి</option>
                                         @foreach ($service as $item)
-                                        <option value="{{$item->id}}">{{$item->service_name}}</option>
+                                        <option value="{{$item->service_id}}" @if($service_id == $item->service_id) selected @endif>{{$item->service_name}}</option>
                                         @endforeach
 
                                     </select>
@@ -47,7 +47,7 @@
                                     <select class="form-select" name="sub_service" id="sub_service">
                                         <option value="">Select sub Service / సేవను ఎంచుకోండి</option>
                                         @foreach ($sub_service as $sub)
-                                        <option value="{{$sub->sub_service_id}}">{{$sub->sub_service_name}}</option>
+                                        <option value="{{$sub->sub_service_id}}"  @if($sub_service_id == $sub->sub_service_id) selected @endif>{{$sub->sub_service_name}}</option>
                                         @endforeach
 
                                     </select>
@@ -55,13 +55,13 @@
                             </div>
 
                             <div class="col-md-3 mb-3">
-                                <div class="form-group" name="document" id="document">
+                                <div class="form-group" >
                                      Select Document /  పత్రాలను ఎంచుకోండి
 
-                                    <select class="form-select">
+                                    <select class="form-select" name="document" id="document" >
                                         <option value="">Select Document /  పత్రాలను ఎంచుకోండి</option>
                                        @foreach ($document as $doc)
-                                       <option value="{{$doc->document_id}}">{{$doc->document_name}}</option>
+                                       <option value="{{$doc->document_id}}" @if($document_id == $doc->document_id) selected @endif>{{$doc->document_name}}</option>
                                        @endforeach
                                     </select>
                                 </div>
@@ -70,7 +70,7 @@
                             <div class="col-md-2 mb-3">
                                 <div class="form-group">
                                     <small>&nbsp;</small>
-                                    <a style="color:#fff ;width: 100%" class="btn btn-primary" ><i class="menu-icon tf-icons bx bx-search"></i>Search</a>
+                                    <button type="submit" style="color:#fff ;width: 100%" class="btn btn-primary" ><i class="menu-icon tf-icons bx bx-search"></i>Search</button>
 
                                 </div>
                             </div>

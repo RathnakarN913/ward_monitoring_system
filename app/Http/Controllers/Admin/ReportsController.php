@@ -10,18 +10,48 @@ use App\Models\DocumentMst;
 use App\Models\SubServiceDocumentMap;
 use Auth;
 
+
+
 class ReportsController extends Controller
 {
     public function reports(Request $request)
     {
-        $service=CitizenServiceMst::get();
-        $sub_service=CitizenSubServiceMst::get();
-        $document=DocumentMst::get();
+        // dd($request->all());
+        if($request->services != null){
+            $attr = ['service_id' => $request->services];
+            $service_id = $request->services;
+        }else{
+            $attr = [];
+            $service_id = '';
+        }
+        if($request->sub_service != null){
+            $attr1 = ['sub_service_id' => $request->sub_service];
+            $sub_service_id = $request->sub_service;
+        }else{
+            $attr1 = [];
+            $sub_service_id = '';
+        }
+
+        if($request->document != null){
+            $attr2 = ['document_id' => $request->document];
+            $document_id = $request->document;
+        }else{
+            $attr2 = [];
+            $document_id = '';
+        }
+
+
+
+        $service=CitizenServiceMst::where('status','0')->get();
+        $sub_service=CitizenSubServiceMst::where('status','0')->get();
+        $document=DocumentMst::where('status','0')->get();
 
         $doc_map=SubServiceDocumentMap::select('service_id', 'sub_service_id')->where('status', '=', '0')
+        ->where($attr)->where($attr1)->where($attr2)
         ->groupBy('service_id', 'sub_service_id')->get();
 
-        return view('admin.reports',compact('service','sub_service','document','doc_map'));
+
+        return view('admin.reports',compact('service','sub_service','document','doc_map','service_id','sub_service_id','document_id'));
     }
 
 
