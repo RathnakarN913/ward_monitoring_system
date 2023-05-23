@@ -106,6 +106,7 @@
 
 @endsection
 @push('scripts')
+
 <script>
       $(document).ready(function() {
         $('#serviceForm').submit(function(e){
@@ -134,6 +135,8 @@
         },
         error: function(jqXHR, textStatus, errorThrown) {
       $('.input-error').remove();
+    
+
       $('input').removeClass('is-invalid');
 
       if (jqXHR.status == 422) {

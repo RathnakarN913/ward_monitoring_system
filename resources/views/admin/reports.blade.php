@@ -108,7 +108,7 @@
                                             $s=1;
                                         @endphp
                                         <tr>
-                                            @foreach ($doc_map as $documents)
+                                            @foreach ($doc_map  as $documents)
 
                                             <td>{{$s++}}</td>
                                             <td>{{$documents->service->service_name}}</td>

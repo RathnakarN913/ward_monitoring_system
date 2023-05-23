@@ -29,8 +29,8 @@
                         <h4 class="fw-bold py-3 mb-4">
                             <span class="  fw-light"><strong>  Add Sub-service / ఉప-సేవను జోడించండి     </strong>
                         </h4>
-<form   method="post" id="sub_serviceForm" name="sub_serviceForm">
-@csrf
+                                <form   method="post" id="sub_serviceForm" name="sub_serviceForm">
+                                @csrf
                         <div class="row mb-5">
                             <div class="col-md-4 mb-2">
                                 <div class="form-group">
